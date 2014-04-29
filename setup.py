@@ -13,5 +13,6 @@ setup(
         "Operating System :: Linux"],
     packages=['merkyl'],
     entry_points={'console_scripts':
-                  ['binary_name = merkyl.dotted_path:cli_handler_function']}
+                  ['binary_name = merkyl.dotted_path:cli_handler_function']},
+    install_requires=['bottle']
 )
