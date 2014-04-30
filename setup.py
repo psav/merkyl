@@ -16,4 +16,5 @@ setup(
                   ['merkyl = merkyl:main']},
     install_requires=['bottle'],
     include_package_data=True,
+    url="https://github.com/psav/merkyl",
 )
