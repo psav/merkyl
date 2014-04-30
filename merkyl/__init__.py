@@ -149,7 +149,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print template_dir
-    print __file__
-    dir()
     main()
