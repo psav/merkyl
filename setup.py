@@ -10,7 +10,8 @@ setup(
     classifiers=[
         "Programming Language :: Python",
         "Development Status :: 4 - Beta",
-        "Operating System :: Linux"],
+        "Operating System :: POSIX :: Linux",
+        "License :: OSI Approved :: Python Software Foundation License"],
     packages=['merkyl'],
     entry_points={'console_scripts':
                   ['merkyl = merkyl:main']},
