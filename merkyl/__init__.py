@@ -87,7 +87,8 @@ def lister():
     elif op == "reset":
         Loggers[name].reset()
     elif op == "get":
-        return '<pre>{0}</pre>'.format(cgi.escape(Loggers[name].get()))
+        file_data = cgi.escape(Loggers[name].get())
+        return template("merkyl", logs=[], file_data=file_data, template_lookup=[template_dir])
     elif op == "deleteall":
         for logger in Loggers:
             Loggers[logger].delete()
@@ -110,7 +111,7 @@ def lister():
             Loggers[logger].delete()
         Loggers.clear()
         sys.stderr.close()
-    return template("merkyl", logs=get_data(), frm=False, template_lookup=[template_dir])
+    return template("merkyl", logs=get_data(), file_data=False, template_lookup=[template_dir])
 
 
 @route('/get/<name>')

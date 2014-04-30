@@ -51,9 +51,7 @@
     <input name="filename">
     <input type="submit" value="Add Log File">
   </form><br>
- % if not logs:
-  <h3> We ain't tailin' anything yet cap'n!
- % else:
+ % if logs:
 <table class="table table-striped">
 <tr><td>Logger name</td><td>Temp file name</td><td>Size</td><td>Real Path</td><td>Running</td><td>Operations</td></tr>
    % for log in logs:
@@ -76,6 +74,10 @@
    <tr>
    % end
 </table>
+ % elif file_data:
+  <pre>{{file_data}}</pre>
+ % else:
+  <h3> We ain't tailin' anything yet cap'n!
  % end
       </div>
 
