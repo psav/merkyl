@@ -6,10 +6,10 @@ setup(
     description="Log file tailer with bottle",
     author="Pete Savage",
     keywords=["tail", "linux", "bottle"],
+    license="PSF",
     classifiers=[
         "Programming Language :: Python",
         "Development Status :: 4 - Beta",
-        "License :: PSF",
         "Operating System :: Linux"],
     packages=['merkyl'],
     entry_points={'console_scripts':
