@@ -88,6 +88,16 @@ def lister():
         Loggers[name].reset()
     elif op == "get":
         return '<pre>{0}</pre>'.format(cgi.escape(Loggers[name].get()))
+    elif op == "deleteall":
+        for logger in Loggers:
+            Loggers[logger].delete()
+        Loggers.clear()
+    elif op == "resetall":
+        for logger in Loggers:
+            Loggers[logger].reset()
+    elif op == "stopall":
+        for logger in Loggers:
+            Loggers[logger].stop()
     elif filename:
         path = request.query.get('filename', None)
         if path:
@@ -95,6 +105,11 @@ def lister():
             if any([path.startswith(allowed) for allowed in allowed_files]):
                 base, tail = os.path.split(path)
                 Loggers[tail] = Log(path)
+    elif op == "quit":
+        for logger in Loggers:
+            Loggers[logger].delete()
+        Loggers.clear()
+        sys.stderr.close()
     return template("merkyl", logs=get_data(), frm=False, template_lookup=[template_dir])
 
 
@@ -128,7 +143,7 @@ def delete(name):
 def deleteall():
     for logger in Loggers:
         Loggers[logger].delete()
-        del Loggers[logger]
+    Loggers.clear()
 
 
 @route('/resetall')
@@ -141,6 +156,7 @@ def resetall():
 def quit():
     for logger in Loggers:
         Loggers[logger].delete()
+        del Loggers[logger]
     sys.stderr.close()
 
 
