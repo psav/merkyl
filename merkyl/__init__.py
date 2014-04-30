@@ -95,8 +95,7 @@ def lister():
             if any([path.startswith(allowed) for allowed in allowed_files]):
                 base, tail = os.path.split(path)
                 Loggers[tail] = Log(path)
-
-    return template("merkyl", logs=get_data(), frm=False, template_lookup=template_dir)
+    return template("merkyl", logs=get_data(), frm=False, template_lookup=[template_dir])
 
 
 @route('/get/<name>')
@@ -144,4 +143,13 @@ def quit():
         Loggers[logger].delete()
     sys.stderr.close()
 
-run(host='0.0.0.0', port=sys.argv[1])
+
+def main():
+    run(host='0.0.0.0', port=sys.argv[1])
+
+
+if __name__ == "__main__":
+    print template_dir
+    print __file__
+    dir()
+    main()
