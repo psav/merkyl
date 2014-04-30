@@ -71,12 +71,12 @@ def get_data():
     return data
 
 
-@route('/gui/', method="get")
+@route('/gui/', method=["get", "post"])
 def lister():
-
-    op = request.query.get('op', None)
-    name = request.query.get('name', None)
-    filename = request.query.get('filename', None)
+    op = request.forms.get('op', None)
+    opo = request.query.get('opo', None)
+    name = request.forms.get('name', None)
+    print op, name
     if op == "start":
         Loggers[name].start()
     elif op == "stop":
@@ -86,31 +86,35 @@ def lister():
         del Loggers[name]
     elif op == "reset":
         Loggers[name].reset()
-    elif op == "get":
+    elif op == "view":
         file_data = cgi.escape(Loggers[name].get())
         return template("merkyl", logs=[], file_data=file_data, template_lookup=[template_dir])
-    elif op == "deleteall":
-        for logger in Loggers:
-            Loggers[logger].delete()
-        Loggers.clear()
-    elif op == "resetall":
-        for logger in Loggers:
-            Loggers[logger].reset()
-    elif op == "stopall":
-        for logger in Loggers:
-            Loggers[logger].stop()
-    elif filename:
-        path = request.query.get('filename', None)
+    elif op == "raw":
+        return Loggers[name].get()
+    elif op == "add":
+        path = request.forms.get('filename', None)
         if path:
             path = os.path.abspath(path)
             if any([path.startswith(allowed) for allowed in allowed_files]):
                 base, tail = os.path.split(path)
                 Loggers[tail] = Log(path)
-    elif op == "quit":
+
+    if opo == "quit":
         for logger in Loggers:
             Loggers[logger].delete()
         Loggers.clear()
         sys.stderr.close()
+    elif opo == "deleteall":
+        for logger in Loggers:
+            Loggers[logger].delete()
+        Loggers.clear()
+    elif opo == "resetall":
+        for logger in Loggers:
+            Loggers[logger].reset()
+    elif opo == "stopall":
+        for logger in Loggers:
+            Loggers[logger].stop()
+
     return template("merkyl", logs=get_data(), file_data=False, template_lookup=[template_dir])
 
 
