@@ -75,7 +75,6 @@ def get_data():
 def lister():
     op = request.forms.get('op', None)
     name = request.forms.get('name', None)
-    print op, name
     if op == "start":
         Loggers[name].start()
     elif op == "stop":
