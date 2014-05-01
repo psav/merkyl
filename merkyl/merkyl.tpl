@@ -26,7 +26,7 @@
             <li class="active"><a href="/gui/">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
+            <!--<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Server Actions <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="/gui/?opo=stopall">Stop All</a></li>
@@ -36,7 +36,7 @@
                 <li class="dropdown-header">System</li>
                 <li><a href="/gui/?opo=quit">Quit</a></li>
               </ul>
-            </li>
+            </li>-->
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -80,6 +80,12 @@
    <tr>
    % end
 </table>
+<form action="/gui/" method="POST">
+	   <button type="submit" class="btn btn-warning btn-xs" name="op" value="resetall">Reset All</button>
+	   <button type="submit" class="btn btn-danger btn-xs" name="op" value="stopall">Stop All</button>
+	   <button type="submit" class="btn btn-danger btn-xs" name="op" value="deleteall">Delete All</button>
+	   <button type="submit" class="btn btn-danger btn-xs" name="op" value="quit" title="Kill Merkyl? (Say it ain't so!)">Kill Merkyl</button>
+</form>
  % elif file_data:
   <pre>{{file_data}}</pre>
  % else:

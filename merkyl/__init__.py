@@ -74,7 +74,6 @@ def get_data():
 @route('/gui/', method=["get", "post"])
 def lister():
     op = request.forms.get('op', None)
-    opo = request.query.get('opo', None)
     name = request.forms.get('name', None)
     print op, name
     if op == "start":
@@ -98,20 +97,19 @@ def lister():
             if any([path.startswith(allowed) for allowed in allowed_files]):
                 base, tail = os.path.split(path)
                 Loggers[tail] = Log(path)
-
-    if opo == "quit":
+    elif op == "quit":
         for logger in Loggers:
             Loggers[logger].delete()
         Loggers.clear()
         sys.stderr.close()
-    elif opo == "deleteall":
+    elif op == "deleteall":
         for logger in Loggers:
             Loggers[logger].delete()
         Loggers.clear()
-    elif opo == "resetall":
+    elif op == "resetall":
         for logger in Loggers:
             Loggers[logger].reset()
-    elif opo == "stopall":
+    elif op == "stopall":
         for logger in Loggers:
             Loggers[logger].stop()
 
