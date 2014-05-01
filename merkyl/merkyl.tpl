@@ -29,12 +29,12 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Server Actions <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="/gui/?op=stopall">Stop All</a></li>
-                <li><a href="/gui/?op=resetall">Reset All</a></li>
-                <li><a href="/gui/?op=deleteall">Delete All</a></li>
+                <li><a href="/gui/?opo=stopall">Stop All</a></li>
+                <li><a href="/gui/?opo=resetall">Reset All</a></li>
+                <li><a href="/gui/?opo=deleteall">Delete All</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">System</li>
-                <li><a href="/gui/?op=quit">Quit</a></li>
+                <li><a href="/gui/?opo=quit">Quit</a></li>
               </ul>
             </li>
           </ul>
@@ -47,9 +47,9 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <h2>Merkyl</h2>
-          <form method="get" action="/gui/">
+          <form method="POST" action="/gui/">
     <input name="filename">
-    <input type="submit" value="Add Log File">
+    <button type="submit" name="op" value="add">Add log file</button>
   </form><br>
  % if logs:
 <table class="table table-striped">
@@ -62,14 +62,20 @@
      <td>{{log['filename']}}</td>
      <td>{{log['running']}}</td>
      <td>
+       <form action="/gui/" method="POST">
+	   <input type="hidden" name="name" value="{{log['name']}}"/>
        % if not log['running']:
-         <a href="/gui/?op=start&name={{log['name']}}" class="btn btn-success btn-xs" role="button">Start</a>
+
+
+	   <button type="submit" class="btn btn-success btn-xs" name="op" value="start">Start</button>
        % else:
-         <a href="/gui/?op=reset&name={{log['name']}}" class="btn btn-warning btn-xs" role="button">Reset</a>
-	 <a href="/gui/?op=stop&name={{log['name']}}" class="btn btn-danger btn-xs" role="button">Stop</a>
+	   <button type="submit" class="btn btn-warning btn-xs" name="op" value="reset">Reset</button>
+	   <button type="submit" class="btn btn-danger btn-xs" name="op" value="stop">Stop</button>
        % end
-	 <a href="/gui/?op=delete&name={{log['name']}}" class="btn btn-danger btn-xs" role="button">Delete</a>
-	 <a href="/gui/?op=get&name={{log['name']}}" class="btn btn-info btn-xs" role="button">Get</a>
+	   <button type="submit" class="btn btn-danger btn-xs" name="op" value="delete">Delete</button>
+	   <button type="submit" class="btn btn-info btn-xs" name="op" value="view">View</button>
+	   <button type="submit" class="btn btn-primary btn-xs" name="op" value="raw">Raw</button>
+	 </form>
      </td>
    <tr>
    % end
