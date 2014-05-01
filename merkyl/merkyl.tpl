@@ -84,12 +84,15 @@
 	   <button type="submit" class="btn btn-warning btn-xs" name="op" value="resetall">Reset All</button>
 	   <button type="submit" class="btn btn-danger btn-xs" name="op" value="stopall">Stop All</button>
 	   <button type="submit" class="btn btn-danger btn-xs" name="op" value="deleteall">Delete All</button>
-	   <button type="submit" class="btn btn-danger btn-xs" name="op" value="quit" title="Kill Merkyl? (Say it ain't so!)">Kill Merkyl</button>
+	   <button type="submit" class="btn btn-danger btn-xs" name="op" value="quit" title="Kill Merkyl? (Say it ain't so!)">Kill Merkyl?</button>
 </form>
  % elif file_data:
   <pre>{{file_data}}</pre>
  % else:
   <h3> We ain't tailin' anything yet cap'n!
+<form action="/gui/" method="POST">
+	   <button type="submit" class="btn btn-danger btn-xs" name="op" value="quit" title="Kill Merkyl? (Say it ain't so!)">Kill Merkyl?</button>
+</form>
  % end
       </div>
 
