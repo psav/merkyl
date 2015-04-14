@@ -1,2 +1,2 @@
 include merkyl/merkyl.tpl
-include README.md
+include README.rst

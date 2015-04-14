@@ -27,15 +27,15 @@ Usage
 
 Merkyl is usually pip installed and is started up by running the following:
 
-```merkyl 8192 allowed.files```
+``merkyl 8192 allowed.files``
 
-* ```8192``` is the port that merkyl should listen on, currently there is no binding to specific IPs and so
+* ``8192`` is the port that merkyl should listen on, currently there is no binding to specific IPs and so
 runs on all interfaces.
-* ```allowed.files``` is a text file containing paths that merkyl will ```.startswith()``` match against when a 
+* ``allowed.files`` is a text file containing paths that merkyl will ``.startswith()`` match against when a 
 new path is requested to be tailed.
 
-You can then navigate to the gui by heading to ```http://127.0.0.1:8192/gui/``` and can use the form to add new
-file names to tail. This file can then be accessed via the GUI, or via ```http://127.0.0.1:8192/get/file.name```
+You can then navigate to the gui by heading to ``http://127.0.0.1:8192/gui/`` and can use the form to add new
+file names to tail. This file can then be accessed via the GUI, or via ``http://127.0.0.1:8192/get/file.name``
 note that to get the file you do not use the path, just the file name. This is true with all files, meaning
 you cannot tail two files of the same name currently.
 
