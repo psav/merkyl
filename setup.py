@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="merkyl",
-    version='1.0.3',
+    version='1.0.4',
     description="Log file tailer with bottle",
     author="Pete Savage",
     keywords=["tail", "linux", "bottle"],
