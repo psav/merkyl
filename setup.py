@@ -11,7 +11,7 @@ setup(
         "Programming Language :: Python",
         "Development Status :: 4 - Beta",
         "Operating System :: POSIX :: Linux",
-        "License :: OSI Approved :: Python Software Foundation License"],
+        "License :: OSI Approved :: MIT License"],
     packages=['merkyl'],
     entry_points={'console_scripts':
                   ['merkyl = merkyl:main']},
