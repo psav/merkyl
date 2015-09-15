@@ -6,7 +6,7 @@ setup(
     description="Log file tailer with bottle",
     author="Pete Savage",
     keywords=["tail", "linux", "bottle"],
-    license="PSF",
+    license="MIT",
     classifiers=[
         "Programming Language :: Python",
         "Development Status :: 4 - Beta",
