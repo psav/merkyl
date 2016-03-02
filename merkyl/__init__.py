@@ -27,7 +27,7 @@ class Log(object):
         if not first_run:
             self.f.close()
         self.f = tempfile.NamedTemporaryFile()
-        self.proc = subprocess.Popen(['/usr/bin/tail', '-f', self.fname], stdout=self.f)
+        self.proc = subprocess.Popen(['/usr/bin/tail', '-fn0', self.fname], stdout=self.f)
         self.running = True
 
     def stop(self):
